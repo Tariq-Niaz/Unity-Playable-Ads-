@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playable Ads Showcase</title>
+    <!-- Modern Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --primary-glow: #6366f1;
+            --accent-landscape: #06b6d4;
+            --accent-portrait: #ec4899;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        /* Header Styling */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Gallery Grid */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 20px;
+        }
+
+        /* Card Design */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5),
+                        0 0 20px 0 rgba(99, 102, 241, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        /* Orientation Badges */
+        .badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.landscape {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-landscape);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .badge.portrait {
+            background: rgba(236, 72, 153, 0.15);
+            color: var(--accent-portrait);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        .play-btn {
+            width: 100%;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .play-btn:hover {
+            opacity: 0.95;
+            transform: scale(1.02);
+            box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+        }
+
+        /* Fullscreen Player Container */
+        .player-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            z-index: 500;
+            display: none;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Floating Back Button */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(15, 23, 42, 0.85);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            z-index: 600;
+            display: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .back-btn:hover {
+            background: rgba(239, 68, 68, 0.9);
+            border-color: transparent;
+            transform: scale(1.05);
+        }
+
+        /* Forced Orientation Lock Overlay */
+        .orientation-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(9, 13, 22, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .orientation-overlay.active {
+            display: flex;
+        }
+
+        /* Animated Phone Rotating Graphic */
+        .phone-icon {
+            width: 60px;
+            height: 100px;
+            border: 3px solid #fff;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            position: relative;
+            animation: rotateDevice 2s infinite ease-in-out;
+        }
+
+        .phone-icon::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #fff;
+        }
+
+        @keyframes rotateDevice {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(-90deg); }
+            100% { transform: rotate(-90deg); }
+        }
+
+        .orientation-overlay h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .orientation-overlay p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎮 Playable Ads Portfolio</h1>
+    <p>Select a playable ad below to experience the interactive demo</p>
+</header>
+
+<div class="container">
+    <!-- Ads 1 to 4: Landscape -->
+    <div class="card">
+        <div class="card-header">
+            <h3>Ad 1</h3>
+            <span class="badge landscape">Landscape</span>
+        </div>
+        <p>Interactive mini-game playable creative.</p>
+        <button class="play-btn" onclick="openAd('Ad1.html', 'landscape')">▶ Play Demo</button>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Ad 2</h3>
+            <span class="badge landscape">Landscape</span>
+        </div>
+        <p>Interactive mini-game playable creative.</p>
+        <button class="play-btn" onclick="openAd('Ad2.html', 'landscape')">▶ Play Demo</button>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Ad 3</h3>
+            <span class="badge landscape">Landscape</span>
+        </div>
+        <p>Interactive mini-game playable creative.</p>
+        <button class="play-btn" onclick="openAd('Ad3.html', 'landscape')">▶ Play Demo</button>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Ad 4</h3>
+            <span class="badge landscape">Landscape</span>
+        </div>
+        <p>Interactive mini-game playable creative.</p>
+        <button class="play-btn" onclick="openAd('Ad4.html', 'landscape')">▶ Play Demo</button>
+    </div>
+
+    <!-- Ads 5 & 6: Portrait -->
+    <div class="card">
+        <div class="card-header">
+            <h3>Ad 5</h3>
+            <span class="badge portrait">Portrait</span>
+        </div>
+        <p>Vertical casual puzzle playable creative.</p>
+        <button class="play-btn" onclick="openAd('Ad5.html', 'portrait')">▶ Play Demo</button>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h3>Ad 6</h3>
+            <span class="badge portrait">Portrait</span>
+        </div>
+        <p>Vertical casual puzzle playable creative.</p>
+        <button class="play-btn" onclick="openAd('Ad6.html', 'portrait')">▶ Play Demo</button>
+    </div>
+</div>
+
+<!-- Player Wrapper & Controls -->
+<button class="back-btn" id="backBtn" onclick="closeAd()">⬅ Exit Ad</button>
+
+<div class="player-wrapper" id="playerWrapper">
+    <iframe id="player" allow="autoplay; fullscreen"></iframe>
+</div>
+
+<!-- Strict Orientation Lock Overlay -->
+<div class="orientation-overlay" id="orientationOverlay">
+    <div class="phone-icon"></div>
+    <h2 id="overlayTitle">Please Rotate Your Device</h2>
+    <p id="overlayDesc">This playable ad requires a different orientation.</p>
+</div>
+
+<script>
+    const playerWrapper = document.getElementById("playerWrapper");
+    const iframe = document.getElementById("player");
+    const backBtn = document.getElementById("backBtn");
+    const orientationOverlay = document.getElementById("orientationOverlay");
+    const overlayTitle = document.getElementById("overlayTitle");
+    const overlayDesc = document.getElementById("overlayDesc");
+
+    let currentRequiredOrientation = null;
+
+    /**
+     * Launch playable ad & enforce device configuration
+     */
+    async function openAd(file, requiredOrientation) {
+        currentRequiredOrientation = requiredOrientation;
+        
+        // Load iframe source
+        iframe.src = file;
+        playerWrapper.style.display = "block";
+        backBtn.style.display = "block";
+
+        // Request Native Mobile Fullscreen
+        try {
+            if (document.documentElement.requestFullscreen) {
+                await document.documentElement.requestFullscreen();
+            }
+        } catch (e) {
+            console.log("Fullscreen request bypassed or denied");
+        }
+
+        // Try standard browser Screen Orientation Lock API
+        if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock(requiredOrientation).catch(() => {
+                // If API lock fails (common on non-mobile/iOS Safari), handle via fallback listener
+            });
+        }
+
+        // Monitor actual viewport orientation
+        checkOrientationMismatch();
+        window.addEventListener("resize", checkOrientationMismatch);
+        window.addEventListener("orientationchange", checkOrientationMismatch);
+    }
+
+    /**
+     * Checks if current viewport matches the required ad orientation
+     */
+    function checkOrientationMismatch() {
+        if (!currentRequiredOrientation) return;
+
+        const isLandscape = window.innerWidth > window.innerHeight;
+        let isMismatch = false;
+
+        if (currentRequiredOrientation === "landscape" && !isLandscape) {
+            isMismatch = true;
+            overlayTitle.innerText = "Rotate to Landscape";
+            overlayDesc.innerText = "Turn your phone horizontally to play this ad.";
+        } else if (currentRequiredOrientation === "portrait" && isLandscape) {
+            isMismatch = true;
+            overlayTitle.innerText = "Rotate to Portrait";
+            overlayDesc.innerText = "Turn your phone vertically to play this ad.";
+        }
+
+        if (isMismatch) {
+            orientationOverlay.classList.add("active");
+        } else {
+            orientationOverlay.classList.remove("active");
+        }
+    }
+
+    /**
+     * Close player and reset settings
+     */
+    function closeAd() {
+        // Stop iframe execution
+        iframe.src = "";
+        
+        // Hide player elements
+        playerWrapper.style.display = "none";
+        backBtn.style.display = "none";
+        orientationOverlay.classList.remove("active");
+
+        // Remove orientation monitoring
+        window.removeEventListener("resize", checkOrientationMismatch);
+        window.removeEventListener("orientationchange", checkOrientationMismatch);
+        currentRequiredOrientation = null;
+
+        // Exit Fullscreen
+        if (document.fullscreenElement) {
+            document.exitFullscreen().catch(() => {});
+        }
+
+        // Unlock Screen Orientation
+        if (screen.orientation && screen.orientation.unlock) {
+            screen.orientation.unlock();
+        }
+    }
+</script>
+
+</body>
+</html>
