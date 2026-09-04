@@ -5,37 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Playable Ads Showcase</title>
     <!-- Modern Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
     <style>
         :root {
-            --bg-dark: #090d16;
-            --card-bg: rgba(30, 41, 59, 0.7);
-            --card-border: rgba(255, 255, 255, 0.1);
+            --bg-dark: #070a12;
+            --card-bg: rgba(18, 24, 38, 0.75);
+            --card-border: rgba(255, 255, 255, 0.08);
             --accent-landscape: #06b6d4;
             --accent-portrait: #ec4899;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
+            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-dark);
             background-image: 
-                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.15) 0px, transparent 50%);
+                radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.18) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.08) 0px, transparent 60%);
             background-attachment: fixed;
             color: var(--text-main);
             min-height: 100vh;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
 
-        /* Prevent main page scrolling when ad is active */
+        /* Prevent background scroll when player is open */
         body.ad-active {
             overflow: hidden !important;
             height: 100vh !important;
@@ -43,13 +47,13 @@
 
         header {
             text-align: center;
-            padding: 40px 20px 20px;
+            padding: 48px 20px 24px;
         }
 
         header h1 {
-            font-size: 2.2rem;
+            font-size: 2.3rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
@@ -57,15 +61,15 @@
 
         header p {
             color: var(--text-muted);
-            margin-top: 8px;
-            font-size: 0.95rem;
+            margin-top: 10px;
+            font-size: 1rem;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1160px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 24px;
             padding: 20px;
         }
@@ -75,7 +79,7 @@
             border: 1px solid var(--card-border);
             border-radius: 20px;
             padding: 24px;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
@@ -94,9 +98,9 @@
 
         .card:hover {
             transform: translateY(-6px);
-            border-color: rgba(99, 102, 241, 0.4);
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.5),
-                        0 0 20px 0 rgba(99, 102, 241, 0.2);
+            border-color: rgba(99, 102, 241, 0.45);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.6),
+                        0 0 24px 0 rgba(99, 102, 241, 0.2);
         }
 
         .card-header {
@@ -104,20 +108,34 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
+            gap: 8px;
+        }
+
+        .card-num {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #818cf8;
+            background: rgba(99, 102, 241, 0.12);
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-right: 6px;
         }
 
         .card h3 {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 700;
+            display: flex;
+            align-items: center;
         }
 
         .badge {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
             padding: 4px 10px;
             border-radius: 20px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         .badge.landscape {
@@ -134,32 +152,37 @@
 
         .card p {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin-bottom: 22px;
         }
 
         .play-btn {
             width: 100%;
-            padding: 12px 20px;
+            padding: 13px 20px;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-weight: 700;
             font-size: 0.95rem;
             cursor: pointer;
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            background: var(--primary-gradient);
             color: white;
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
             transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
 
         .play-btn:hover {
             opacity: 0.95;
             transform: scale(1.02);
-            box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 6px 18px rgba(79, 70, 229, 0.45);
         }
 
         /* -------------------------------------------------------------
-           ISOLATED FULLSCREEN PLAYER WRAPPER
+           PLAYER WRAPPER & RESPONSIVE SIMULATOR
         ------------------------------------------------------------- */
         .player-wrapper {
             position: fixed;
@@ -167,62 +190,170 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: #000000;
-            z-index: 999999; /* Highest possible layer */
+            background: rgba(3, 7, 18, 0.96);
+            backdrop-filter: blur(20px);
+            z-index: 999999;
             display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        iframe {
+        /* Player Top Bar */
+        .player-topbar {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            border: none;
-            z-index: 10;
+            right: 0;
+            height: 60px;
+            background: rgba(15, 23, 42, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
         }
 
-        /* Floating Back Button inside Player Wrapper */
-        .back-btn {
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            background: rgba(15, 23, 42, 0.9);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px 18px;
-            border-radius: 30px;
+        .topbar-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .topbar-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .topbar-mode-badge {
+            font-size: 0.72rem;
             font-weight: 600;
-            font-size: 0.9rem;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .close-btn {
+            background: rgba(239, 68, 68, 0.85);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 8px 18px;
+            border-radius: 24px;
+            font-weight: 700;
+            font-size: 0.88rem;
             cursor: pointer;
-            backdrop-filter: blur(10px);
-            z-index: 20; /* Sits above iframe */
             transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .back-btn:hover {
-            background: rgba(239, 68, 68, 0.9);
-            border-color: transparent;
-            transform: scale(1.05);
+        .close-btn:hover {
+            background: #dc2626;
+            transform: scale(1.04);
+            box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
         }
 
-        /* Orientation Lock Overlay inside Player Wrapper */
+        /* Responsive Frame for Desktop Preview */
+        .player-stage {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 60px;
+        }
+
+        .screen-container {
+            position: relative;
+            background: #000;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Desktop Portrait Mockup (Phone Frame) */
+        .desktop-portrait {
+            width: 380px;
+            height: 740px;
+            max-height: calc(100vh - 100px);
+            border-radius: 40px;
+            border: 10px solid #1e293b;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 
+                        0 0 40px rgba(99, 102, 241, 0.25);
+        }
+
+        /* Desktop Landscape Mockup (Widescreen Frame) */
+        .desktop-landscape {
+            width: min(1040px, 92vw);
+            aspect-ratio: 16 / 9;
+            max-height: calc(100vh - 100px);
+            border-radius: 20px;
+            border: 8px solid #1e293b;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.9), 
+                        0 0 40px rgba(6, 182, 212, 0.25);
+        }
+
+        /* Mobile Device Mode (True Fullscreen) */
+        .mobile-mode .player-topbar {
+            background: transparent;
+            border: none;
+            height: auto;
+            top: 14px;
+            left: 14px;
+            right: auto;
+            padding: 0;
+        }
+
+        .mobile-mode .topbar-info {
+            display: none;
+        }
+
+        .mobile-mode .player-stage {
+            padding-top: 0;
+        }
+
+        .mobile-mode .screen-container {
+            width: 100vw !important;
+            height: 100vh !important;
+            max-height: 100vh !important;
+            border-radius: 0 !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #000;
+        }
+
+        /* -------------------------------------------------------------
+           ORIENTATION OVERLAY (ONLY TRIGGERED ON MOBILE PHONES)
+        ------------------------------------------------------------- */
         .orientation-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(9, 13, 22, 0.98);
-            backdrop-filter: blur(15px);
-            z-index: 30; /* Highest layer inside player */
+            background: rgba(7, 10, 18, 0.98);
+            backdrop-filter: blur(16px);
+            z-index: 500;
             display: none;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            padding: 24px;
         }
 
         .orientation-overlay.active {
@@ -230,10 +361,10 @@
         }
 
         .phone-icon {
-            width: 50px;
-            height: 90px;
-            border: 3px solid #fff;
-            border-radius: 12px;
+            width: 52px;
+            height: 94px;
+            border: 3.5px solid #fff;
+            border-radius: 14px;
             margin-bottom: 24px;
             position: relative;
             animation: rotateDevice 2s infinite ease-in-out;
@@ -245,8 +376,8 @@
             bottom: 6px;
             left: 50%;
             transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: #fff;
         }
@@ -260,176 +391,253 @@
         .orientation-overlay h2 {
             font-size: 1.5rem;
             margin-bottom: 10px;
+            color: #ffffff;
         }
 
         .orientation-overlay p {
             color: var(--text-muted);
             font-size: 0.95rem;
+            max-width: 320px;
+            line-height: 1.5;
+        }
+
+        /* Protection cursor */
+        body, button, iframe {
+            -webkit-touch-callout: none;
         }
     </style>
 </head>
-
-<body>
+<body oncontextmenu="return false;">
 
 <header>
     <h1>🎮 Playable Ads Portfolio</h1>
-    <p>Select a playable ad below to experience the interactive demo</p>
+    <p>Interactive game ads & playable creatives showcase</p>
 </header>
 
 <div class="container">
-    <!-- 1. Ludo (No. 1) -->
+    <!-- 1. Ludo (Portrait) -->
     <div class="card">
         <div class="card-header">
-            <h3>Ludo</h3>
+            <h3><span class="card-num">1</span>Ludo</h3>
             <span class="badge portrait">Portrait</span>
         </div>
-        <p>Interactive dice roll & board game playable ad.</p>
-        <button class="play-btn" onclick="openAd('Ludo.html', 'portrait')">▶ Play Demo</button>
+        <p>Interactive dice roll & classic board game playable ad creative.</p>
+        <button class="play-btn" onclick="openAd('playables/Ludo.html', 'portrait', 'Ludo')">▶ Play Demo</button>
     </div>
 
-    <!-- 2. New Car Steer Red (No. 2) -->
+    <!-- 2. Parking Simulator (Landscape) -->
     <div class="card">
         <div class="card-header">
-            <h3>New Car Steer Red</h3>
+            <h3><span class="card-num">2</span>Parking Simulator</h3>
             <span class="badge landscape">Landscape</span>
         </div>
-        <p>Dynamic sports car steering & driving simulation.</p>
-        <button class="play-btn" onclick="openAd('NewCarSteerRed.html', 'landscape')">▶ Play Demo</button>
+        <p>Precision sports car steering & realistic parking simulation.</p>
+        <button class="play-btn" onclick="openAd('playables/ParkingSimulator.html', 'landscape', 'Parking Simulator')">▶ Play Demo</button>
     </div>
 
-    <!-- 3. Moto Bike (No. 3) -->
+    <!-- 3. Moto Bike (Landscape) -->
     <div class="card">
         <div class="card-header">
-            <h3>Moto Bike</h3>
+            <h3><span class="card-num">3</span>Moto Bike</h3>
+            <span class="badge landscape">Landscape</span>
+        </div>
+        <p>High-speed highway traffic racer motorcycle playable ad.</p>
+        <button class="play-btn" onclick="openAd('playables/MotoBike.html', 'landscape', 'Moto Bike')">▶ Play Demo</button>
+    </div>
+
+    <!-- 4. Police Car Simulator (Landscape) -->
+    <div class="card">
+        <div class="card-header">
+            <h3><span class="card-num">4</span>Police Car Simulator</h3>
+            <span class="badge landscape">Landscape</span>
+        </div>
+        <p>Dynamic police cruiser driving, steering, and siren mission playable.</p>
+        <button class="play-btn" onclick="openAd('playables/PoliceCarSimulator.html', 'landscape', 'Police Car Simulator')">▶ Play Demo</button>
+    </div>
+
+    <!-- 5. Hunting (Landscape) -->
+    <div class="card">
+        <div class="card-header">
+            <h3><span class="card-num">5</span>Hunting</h3>
+            <span class="badge landscape">Landscape</span>
+        </div>
+        <p>Slingshot physics & catapult animal target hunting playable ad.</p>
+        <button class="play-btn" onclick="openAd('playables/Hunting.html', 'landscape', 'Hunting')">▶ Play Demo</button>
+    </div>
+
+    <!-- 6. Truck Simulator (Landscape) -->
+    <div class="card">
+        <div class="card-header">
+            <h3><span class="card-num">6</span>Truck Simulator</h3>
+            <span class="badge landscape">Landscape</span>
+        </div>
+        <p>Highway heavy cargo transport & highway driving simulation.</p>
+        <button class="play-btn" onclick="openAd('playables/TruckSimulator.html', 'landscape', 'Truck Simulator')">▶ Play Demo</button>
+    </div>
+
+    <!-- 7. 3D Truck Simulator (Landscape) -->
+    <div class="card">
+        <div class="card-header">
+            <h3><span class="card-num">7</span>3D Truck Simulator</h3>
+            <span class="badge landscape">Landscape</span>
+        </div>
+        <p>Euro offroad heavy trailer simulation & 3D realistic terrain driving.</p>
+        <button class="play-btn" onclick="openAd('playables/3DTruckSimulator.html', 'landscape', '3D Truck Simulator')">▶ Play Demo</button>
+    </div>
+
+    <!-- 8. Sniper 3D (Landscape) -->
+    <div class="card">
+        <div class="card-header">
+            <h3><span class="card-num">8</span>Sniper 3D</h3>
+            <span class="badge landscape">Landscape</span>
+        </div>
+        <p>Tactical long-range sniper scope aiming & slow-motion target elimination.</p>
+        <button class="play-btn" onclick="openAd('playables/Sniper3D.html', 'landscape', 'Sniper 3D')">▶ Play Demo</button>
+    </div>
+
+    <!-- 9. Arrow (Portrait) -->
+    <div class="card">
+        <div class="card-header">
+            <h3><span class="card-num">9</span>Arrow</h3>
             <span class="badge portrait">Portrait</span>
         </div>
-        <p>High-speed highway traffic racer motorbike playable.</p>
-        <button class="play-btn" onclick="openAd('MotoBike.html', 'portrait')">▶ Play Demo</button>
+        <p>Mind-bending directional arrow escape & maze routing puzzle.</p>
+        <button class="play-btn" onclick="openAd('playables/Arrow1.html', 'portrait', 'Arrow')">▶ Play Demo</button>
     </div>
 
-    <!-- 4. Police Car Red (No. 4) -->
+    <!-- 10. Arrow (Portrait) -->
     <div class="card">
         <div class="card-header">
-            <h3>Police Car Red</h3>
-            <span class="badge landscape">Landscape</span>
-        </div>
-        <p>Precision police car steering & parking playable ad.</p>
-        <button class="play-btn" onclick="openAd('PoliceCarRed.html', 'landscape')">▶ Play Demo</button>
-    </div>
-
-    <!-- Existing Ads -->
-    <div class="card">
-        <div class="card-header">
-            <h3>Ad 1</h3>
-            <span class="badge landscape">Landscape</span>
-        </div>
-        <p>Interactive mini-game playable creative.</p>
-        <button class="play-btn" onclick="openAd('Ad1.html', 'landscape')">▶ Play Demo</button>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <h3>Ad 2</h3>
-            <span class="badge landscape">Landscape</span>
-        </div>
-        <p>Interactive mini-game playable creative.</p>
-        <button class="play-btn" onclick="openAd('Ad2.html', 'landscape')">▶ Play Demo</button>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <h3>Ad 3</h3>
-            <span class="badge landscape">Landscape</span>
-        </div>
-        <p>Interactive mini-game playable creative.</p>
-        <button class="play-btn" onclick="openAd('Ad3.html', 'landscape')">▶ Play Demo</button>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <h3>Ad 4</h3>
-            <span class="badge landscape">Landscape</span>
-        </div>
-        <p>Interactive mini-game playable creative.</p>
-        <button class="play-btn" onclick="openAd('Ad4.html', 'landscape')">▶ Play Demo</button>
-    </div>
-
-    <!-- Last 2 Ads: PORTRAIT -->
-    <div class="card">
-        <div class="card-header">
-            <h3>Ad 5</h3>
+            <h3><span class="card-num">10</span>Arrow</h3>
             <span class="badge portrait">Portrait</span>
         </div>
-        <p>Vertical casual puzzle playable creative.</p>
-        <button class="play-btn" onclick="openAd('Ad5.html', 'portrait')">▶ Play Demo</button>
-    </div>
-
-    <div class="card">
-        <div class="card-header">
-            <h3>Ad 6</h3>
-            <span class="badge portrait">Portrait</span>
-        </div>
-        <p>Vertical casual puzzle playable creative.</p>
-        <button class="play-btn" onclick="openAd('Ad6.html', 'portrait')">▶ Play Demo</button>
+        <p>Logical path unlocking & sequential arrow escape puzzle.</p>
+        <button class="play-btn" onclick="openAd('playables/Arrow2.html', 'portrait', 'Arrow (Variation)')">▶ Play Demo</button>
     </div>
 </div>
 
-<!-- Unified Isolated Player Container -->
+<!-- Isolated Player Wrapper -->
 <div class="player-wrapper" id="playerWrapper">
-    <button class="back-btn" id="backBtn" onclick="closeAd()">⬅ Exit Ad</button>
-    
-    <iframe id="player" allow="autoplay; fullscreen"></iframe>
+    <!-- Top Control Bar -->
+    <div class="player-topbar">
+        <div class="topbar-info">
+            <span class="topbar-title" id="topbarTitle">Game Title</span>
+            <span class="topbar-mode-badge" id="topbarModeBadge">Mode</span>
+        </div>
+        <button class="close-btn" onclick="closeAd()">✕ Exit Ad</button>
+    </div>
 
+    <!-- Stage containing device mockup on desktop or full screen on mobile -->
+    <div class="player-stage">
+        <div class="screen-container" id="screenContainer">
+            <iframe id="player" allow="autoplay; fullscreen"></iframe>
+        </div>
+    </div>
+
+    <!-- Mobile-Only Orientation Overlay -->
     <div class="orientation-overlay" id="orientationOverlay">
         <div class="phone-icon"></div>
         <h2 id="overlayTitle">Please Rotate Your Device</h2>
-        <p id="overlayDesc">This playable ad requires a different orientation.</p>
+        <p id="overlayDesc">Turn your phone to play this playable ad.</p>
     </div>
 </div>
 
 <script>
     const playerWrapper = document.getElementById("playerWrapper");
+    const screenContainer = document.getElementById("screenContainer");
     const iframe = document.getElementById("player");
+    const topbarTitle = document.getElementById("topbarTitle");
+    const topbarModeBadge = document.getElementById("topbarModeBadge");
     const orientationOverlay = document.getElementById("orientationOverlay");
     const overlayTitle = document.getElementById("overlayTitle");
     const overlayDesc = document.getElementById("overlayDesc");
 
     let currentRequiredOrientation = null;
+    let currentBlobUrl = null;
 
-    async function openAd(file, requiredOrientation) {
-        currentRequiredOrientation = requiredOrientation;
+    // Detect if user is on a physical mobile phone/tablet vs Desktop / Mac / PC
+    function isMobileDevice() {
+        const ua = navigator.userAgent || '';
+        const isTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
         
-        // Prevent index page background scrolling
+        // Strict desktop check: Mac, Windows, or Linux desktop without touch
+        const isDesktopPlatform = /Macintosh|Windows NT|X11|Linux x86_64/i.test(ua) && !isTouch;
+        if (isDesktopPlatform) {
+            return false;
+        }
+
+        // Mobile UA regex
+        const isMobileUA = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua);
+        return isMobileUA || (isTouch && window.innerWidth <= 820);
+    }
+
+    async function openAd(adPath, orientation, title) {
+        currentRequiredOrientation = orientation;
+        const mobile = isMobileDevice();
+
+        // Update UI Topbar
+        topbarTitle.innerText = "🎮 " + (title || "Playable Ad");
+        topbarModeBadge.innerText = orientation.toUpperCase() + (mobile ? " (Mobile)" : " (Desktop Preview)");
+
+        // Set layout classes
+        if (mobile) {
+            playerWrapper.classList.add("mobile-mode");
+            screenContainer.className = "screen-container";
+        } else {
+            playerWrapper.classList.remove("mobile-mode");
+            screenContainer.className = "screen-container " + (orientation === "portrait" ? "desktop-portrait" : "desktop-landscape");
+        }
+
+        // Prevent body scrolling
         document.body.classList.add("ad-active");
+        playerWrapper.style.display = "flex";
 
-        // Load iframe source and bring wrapper to front
-        iframe.src = file;
-        playerWrapper.style.display = "block";
-
-        // Request Fullscreen on the Player Wrapper directly (Not document body)
+        // Load content via ephemeral Blob URL for source protection & privacy
         try {
-            if (playerWrapper.requestFullscreen) {
-                await playerWrapper.requestFullscreen();
-            } else if (playerWrapper.webkitRequestFullscreen) {
-                await playerWrapper.webkitRequestFullscreen();
+            const resp = await fetch(adPath);
+            if (!resp.ok) throw new Error("Fetch failed");
+            const htmlContent = await resp.text();
+            
+            if (currentBlobUrl) {
+                URL.revokeObjectURL(currentBlobUrl);
             }
+            const blob = new Blob([htmlContent], { type: "text/html" });
+            currentBlobUrl = URL.createObjectURL(blob);
+            iframe.src = currentBlobUrl;
         } catch (e) {
-            console.log("Fullscreen mode not forced:", e);
+            // Fallback to direct path if fetch fails
+            iframe.src = adPath;
         }
 
-        // Try standard device orientation lock API
-        if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock(requiredOrientation).catch(() => {});
-        }
+        // Handle Mobile Fullscreen & Orientation Lock
+        if (mobile) {
+            try {
+                if (playerWrapper.requestFullscreen) {
+                    await playerWrapper.requestFullscreen();
+                } else if (playerWrapper.webkitRequestFullscreen) {
+                    await playerWrapper.webkitRequestFullscreen();
+                }
+            } catch (err) {}
 
-        // Check if device orientation matches ad requirement
-        checkOrientationMismatch();
-        window.addEventListener("resize", checkOrientationMismatch);
-        window.addEventListener("orientationchange", checkOrientationMismatch);
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock(orientation).catch(() => {});
+            }
+
+            checkOrientationMismatch();
+            window.addEventListener("resize", checkOrientationMismatch);
+            window.addEventListener("orientationchange", checkOrientationMismatch);
+        } else {
+            // NEVER show orientation overlay on desktop / Mac / PC!
+            orientationOverlay.classList.remove("active");
+        }
     }
 
     function checkOrientationMismatch() {
-        if (!currentRequiredOrientation) return;
+        // Only run on mobile devices
+        if (!isMobileDevice() || !currentRequiredOrientation) {
+            orientationOverlay.classList.remove("active");
+            return;
+        }
 
         const isLandscape = window.innerWidth > window.innerHeight;
         let isMismatch = false;
@@ -437,11 +645,11 @@
         if (currentRequiredOrientation === "landscape" && !isLandscape) {
             isMismatch = true;
             overlayTitle.innerText = "Rotate to Landscape";
-            overlayDesc.innerText = "Turn your phone horizontally to play this ad.";
+            overlayDesc.innerText = "Please turn your phone horizontally to play this ad.";
         } else if (currentRequiredOrientation === "portrait" && isLandscape) {
             isMismatch = true;
             overlayTitle.innerText = "Rotate to Portrait";
-            overlayDesc.innerText = "Turn your phone vertically to play this ad.";
+            overlayDesc.innerText = "Please turn your phone vertically to play this ad.";
         }
 
         if (isMismatch) {
@@ -452,10 +660,14 @@
     }
 
     function closeAd() {
-        // Reset iframe source
-        iframe.src = "";
-        
-        // Hide wrapper and overlay
+        // Revoke Blob URL to free memory & ensure privacy
+        if (currentBlobUrl) {
+            URL.revokeObjectURL(currentBlobUrl);
+            currentBlobUrl = null;
+        }
+        iframe.src = "about:blank";
+
+        // Close UI
         playerWrapper.style.display = "none";
         orientationOverlay.classList.remove("active");
         document.body.classList.remove("ad-active");
@@ -465,7 +677,7 @@
         window.removeEventListener("orientationchange", checkOrientationMismatch);
         currentRequiredOrientation = null;
 
-        // Exit Fullscreen Mode
+        // Exit mobile fullscreen
         if (document.fullscreenElement || document.webkitFullscreenElement) {
             if (document.exitFullscreen) {
                 document.exitFullscreen().catch(() => {});
@@ -474,11 +686,26 @@
             }
         }
 
-        // Unlock orientation
+        // Unlock screen orientation
         if (screen.orientation && screen.orientation.unlock) {
             screen.orientation.unlock();
         }
     }
+
+    // Source protection: Prevent right-click, saving, inspection shortcuts
+    document.addEventListener("contextmenu", (e) => e.preventDefault());
+    document.addEventListener("keydown", (e) => {
+        // Prevent Ctrl+S, Cmd+S, Ctrl+U, Cmd+Opt+U, Ctrl+P, Cmd+P
+        if ((e.ctrlKey || e.metaKey) && (e.key === "s" || e.key === "S" || e.key === "u" || e.key === "U" || e.key === "p" || e.key === "P")) {
+            e.preventDefault();
+            return false;
+        }
+        // Prevent F12, Ctrl+Shift+I, Cmd+Opt+I, Ctrl+Shift+J, Cmd+Opt+J, Ctrl+Shift+C
+        if (e.key === "F12" || ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === "I" || e.key === "i" || e.key === "J" || e.key === "j" || e.key === "C" || e.key === "c"))) {
+            e.preventDefault();
+            return false;
+        }
+    });
 </script>
 
 </body>

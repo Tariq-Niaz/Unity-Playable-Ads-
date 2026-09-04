@@ -1,18 +1,35 @@
-# Unity Playable Ads Portfolio
+# 🎮 Unity Playable Ads Portfolio
 
-This portfolio features a range of high-performance playable ads developed with HTML5 and Unity WebGL. Each project is optimized for mobile-first interaction, lightweight payload sizes, and responsive orientation handling.
+A curated collection of high-performance interactive playable ads developed with Unity WebGL & HTML5. Fully optimized for cross-network ad networks (IronSource, AppLovin, Mintegral, Unity Ads, TikTok, Google Ads) with sub-second load times and orientation management.
 
-🌐 **Live Showcase**: [https://tariq-niaz.github.io/Unity-Playable-Ads-/](https://tariq-niaz.github.io/Unity-Playable-Ads-/)
+🌐 **Live Interactive Showcase**: [https://tariq-niaz.github.io/Unity-Playable-Ads-/](https://tariq-niaz.github.io/Unity-Playable-Ads-/)
 
 ---
 
-### 🎮 Featured Playable Ads
+### 🕹️ Featured Playable Ads
 
-1. **Ludo** (`Ludo.html` — Portrait) - Interactive dice roll & board game mechanic.
-2. **New Car Steer Red** (`NewCarSteerRed.html` — Landscape) - Precision steering & driving simulation.
-3. **Moto Bike** (`MotoBike.html` — Portrait) - High-speed traffic racer motorbike playable.
-4. **Police Car Red** (`PoliceCarRed.html` — Landscape) - Police squad car steering & pursuit challenge.
-5. **Ad 1 to Ad 6** - Additional interactive mini-games and casual puzzle creatives.
+| # | Playable Ad | Orientation | Genre / Mechanics |
+| :---: | :--- | :---: | :--- |
+| **1** | **Ludo** | 📱 Portrait | Interactive dice roll & classic board game playable |
+| **2** | **Parking Simulator** | 🖥️ Landscape | Precision sports car steering & realistic parking simulation |
+| **3** | **Moto Bike** | 🖥️ Landscape | High-speed traffic racer motorcycle dodging & acceleration |
+| **4** | **Police Car Simulator** | 🖥️ Landscape | Dynamic police patrol driving, siren, and barrier avoidance |
+| **5** | **Hunting** | 🖥️ Landscape | Physics-driven slingshot & catapult animal hunting |
+| **6** | **Truck Simulator** | 🖥️ Landscape | Highway heavy cargo transport & steering simulation |
+| **7** | **3D Truck Simulator** | 🖥️ Landscape | Euro offroad cargo trailer simulation & terrain navigation |
+| **8** | **Sniper 3D** | 🖥️ Landscape | Tactical long-range scope aiming & precision target elimination |
+| **9** | **Arrow** | 📱 Portrait | Directional arrow maze routing & escape puzzle |
+| **10** | **Arrow** | 📱 Portrait | Logical sequential path puzzle & spatial escape |
+
+---
+
+### ✨ Showcase Features
+
+- **📱 Smart Cross-Platform Simulator**:
+  - **Desktop / Mac / PC**: Runs in an interactive preview frame (adaptive mobile phone frame for portrait games and widescreen frame for landscape games) without device rotation prompts.
+  - **Mobile / Phones**: Launches directly in true fullscreen with device orientation detection.
+- **🛡️ Source Protected**: Client-side protection with dynamic Blob execution preventing raw source downloads.
+- **⚡ Zero-Lag Loading**: Self-contained single-file creative bundles.
 
 ---
 
