@@ -10,16 +10,18 @@ A curated collection of high-performance interactive playable ads developed with
 
 | # | Playable Ad | Orientation | Genre / Mechanics |
 | :---: | :--- | :---: | :--- |
-| **1** | **Ludo** | 📱 Portrait | Interactive dice roll & classic board game playable |
-| **2** | **Parking Simulator** | 🖥️ Landscape | Precision sports car steering & realistic parking simulation |
-| **3** | **Moto Bike** | 🖥️ Landscape | High-speed traffic racer motorcycle dodging & acceleration |
-| **4** | **Police Car Simulator** | 🖥️ Landscape | Dynamic police patrol driving, siren, and barrier avoidance |
-| **5** | **Hunting** | 🖥️ Landscape | Physics-driven slingshot & catapult animal hunting |
-| **6** | **Truck Simulator** | 🖥️ Landscape | Highway heavy cargo transport & steering simulation |
-| **7** | **3D Truck Simulator** | 🖥️ Landscape | Euro offroad cargo trailer simulation & terrain navigation |
-| **8** | **Sniper 3D** | 🖥️ Landscape | Tactical long-range scope aiming & precision target elimination |
-| **9** | **Arrow** | 📱 Portrait | Directional arrow maze routing & escape puzzle |
-| **10** | **Arrow** | 📱 Portrait | Logical sequential path puzzle & spatial escape |
+| **1** | **Makeup Game: Fashion Makeover** | 📱 Portrait | Interactive beauty salon makeover & stylish fashion dress up |
+| **2** | **Ludo** | 📱 Portrait | Interactive dice roll & classic board game playable |
+| **3** | **Truck Simulator** | 🖥️ Landscape | Highway heavy cargo transport & oil tanker driving simulation |
+| **4** | **3D Truck Simulator** | 🖥️ Landscape | Euro offroad cargo trailer simulation & terrain navigation |
+| **5** | **Dress Up: Fashion Styler** | 📱 Portrait | Glamorous runway styling, wardrobe dress-up & accessory matching |
+| **6** | **Parking Simulator** | 🖥️ Landscape | Precision sports car steering & realistic parking simulation |
+| **7** | **Moto Bike** | 🖥️ Landscape | High-speed traffic racer motorcycle dodging & acceleration |
+| **8** | **Police Car Simulator** | 🖥️ Landscape | Dynamic police patrol driving, siren, and barrier avoidance |
+| **9** | **Hunting** | 🖥️ Landscape | Physics-driven slingshot & catapult animal hunting |
+| **10** | **Sniper 3D** | 🖥️ Landscape | Tactical long-range scope aiming & precision target elimination |
+| **11** | **Arrow** | 📱 Portrait | Directional arrow maze routing & escape puzzle |
+| **12** | **Arrow (Variation)** | 📱 Portrait | Logical sequential path puzzle & spatial escape |
 
 ---
 
