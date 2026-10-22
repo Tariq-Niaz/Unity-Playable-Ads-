@@ -10,21 +10,22 @@ A curated collection of high-performance interactive playable ads developed with
 
 | # | Playable Ad | Orientation | Genre / Mechanics |
 | :---: | :--- | :---: | :--- |
-| **1** | **Ludo** | 📱 Portrait | Interactive dice roll & classic board game playable |
-| **2** | **Makeup Game: Fashion Makeover** | 📱 Portrait | Interactive beauty salon makeover & stylish fashion dress up |
-| **3** | **Hunting** | 🖥️ Landscape | Physics-driven slingshot & catapult animal target hunting |
-| **4** | **Moto Racer Forest** | 📱 Portrait | High-speed offroad forest motorcycle racing & obstacle navigation |
-| **5** | **MRBRG: Bike Racing** | 📱 Portrait | Dynamic highway moto racer bike racing and traffic dodging simulation |
-| **6** | **Moto Racer Desert** | 📱 Portrait | Thrilling desert sand dune motorcycle racing and stunt challenge |
-| **7** | **Truck Simulator** | 🖥️ Landscape | Highway heavy cargo transport & oil tanker driving simulation |
-| **8** | **3D Truck Simulator** | 🖥️ Landscape | Euro offroad heavy trailer simulation & 3D realistic terrain driving |
-| **9** | **Dress Up: Fashion Styler** | 📱 Portrait | Glamorous runway styling, wardrobe dress-up & accessory matching |
-| **10** | **Parking Simulator** | 🖥️ Landscape | Precision sports car steering & realistic parking simulation |
-| **11** | **Moto Bike** | 🖥️ Landscape | High-speed highway traffic racer motorcycle playable ad |
-| **12** | **Police Car Simulator** | 🖥️ Landscape | Dynamic police cruiser driving, steering, and siren mission playable |
-| **13** | **Sniper 3D** | 🖥️ Landscape | Tactical long-range sniper scope aiming & slow-motion target elimination |
-| **14** | **Arrow** | 📱 Portrait | Mind-bending directional arrow escape & maze routing puzzle |
-| **15** | **Arrow (Variation)** | 📱 Portrait | Logical sequential path unlocking & spatial escape puzzle |
+| **1** | **Mini Car** | 📱 Portrait | Exciting arcade raceway steering & endless mini car traffic driving |
+| **2** | **Ludo** | 📱 Portrait | Interactive dice roll & classic board game playable |
+| **3** | **Makeup Game: Fashion Makeover** | 📱 Portrait | Interactive beauty salon makeover & stylish fashion dress up |
+| **4** | **Hunting** | 🖥️ Landscape | Physics-driven slingshot & catapult animal target hunting |
+| **5** | **Moto Racer Forest** | 📱 Portrait | High-speed offroad forest motorcycle racing & obstacle navigation |
+| **6** | **MRBRG: Bike Racing** | 📱 Portrait | Dynamic highway moto racer bike racing and traffic dodging simulation |
+| **7** | **Moto Racer Desert** | 📱 Portrait | Thrilling desert sand dune motorcycle racing and stunt challenge |
+| **8** | **Truck Simulator** | 🖥️ Landscape | Highway heavy cargo transport & oil tanker driving simulation |
+| **9** | **3D Truck Simulator** | 🖥️ Landscape | Euro offroad heavy trailer simulation & 3D realistic terrain driving |
+| **10** | **Dress Up: Fashion Styler** | 📱 Portrait | Glamorous runway styling, wardrobe dress-up & accessory matching |
+| **11** | **Parking Simulator** | 🖥️ Landscape | Precision sports car steering & realistic parking simulation |
+| **12** | **Moto Bike** | 🖥️ Landscape | High-speed highway traffic racer motorcycle playable ad |
+| **13** | **Police Car Simulator** | 🖥️ Landscape | Dynamic police cruiser driving, steering, and siren mission playable |
+| **14** | **Sniper 3D** | 🖥️ Landscape | Tactical long-range sniper scope aiming & slow-motion target elimination |
+| **15** | **Arrow** | 📱 Portrait | Mind-bending directional arrow escape & maze routing puzzle |
+| **16** | **Arrow (Variation)** | 📱 Portrait | Logical sequential path unlocking & spatial escape puzzle |
 
 ---
 
