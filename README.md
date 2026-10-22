@@ -34,7 +34,7 @@ A curated collection of high-performance interactive playable ads developed with
 - **📱 Smart Cross-Platform Simulator**:
   - **Desktop / Mac / PC**: Runs in an interactive preview frame (adaptive mobile phone frame for portrait games and widescreen frame for landscape games) without device rotation prompts.
   - **Mobile / Phones**: Launches directly in true fullscreen with device orientation detection.
-- **🛡️ Source Protected**: Client-side protection with dynamic Blob execution preventing raw source downloads.
+- **🛡️ Encrypted Asset Vault & Source Protection**: All creative assets are compiled and encrypted in protected binary vaults (`.dat`) with dynamic in-memory Blob execution and domain locking. Raw HTML sources are kept private.
 - **⚡ Zero-Lag Loading**: Self-contained single-file creative bundles.
 
 ---
