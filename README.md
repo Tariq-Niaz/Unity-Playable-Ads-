@@ -10,7 +10,7 @@ A curated collection of high-performance interactive playable ads developed with
 
 | # | Playable Ad | Orientation | Genre / Mechanics |
 | :---: | :--- | :---: | :--- |
-| **1** | **Mini Car** | 📱 Portrait | Exciting arcade raceway steering & endless mini car traffic driving |
+| **1** | **Mini Car** | 🖥️ Landscape | Exciting arcade raceway steering & endless mini car traffic driving |
 | **2** | **Ludo** | 📱 Portrait | Interactive dice roll & classic board game playable |
 | **3** | **Makeup Game: Fashion Makeover** | 📱 Portrait | Interactive beauty salon makeover & stylish fashion dress up |
 | **4** | **Hunting** | 🖥️ Landscape | Physics-driven slingshot & catapult animal target hunting |
