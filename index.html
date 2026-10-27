@@ -3,6 +3,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Playable Ads Showcase</title>
     <!-- Modern Font -->
@@ -666,7 +669,8 @@
 
         // Fetch protected encrypted asset, decrypt in-memory, and execute via ephemeral Blob URL
         try {
-            const resp = await fetch(adPath);
+            const fetchUrl = adPath + (adPath.includes('?') ? '&' : '?') + 't=' + Date.now();
+            const resp = await fetch(fetchUrl, { cache: "no-store" });
             if (!resp.ok) throw new Error("Vault fetch failed");
             const buf = await resp.arrayBuffer();
             const decryptedBytes = decryptVault(new Uint8Array(buf));
